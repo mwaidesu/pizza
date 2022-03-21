@@ -4,6 +4,8 @@ A web application that allows a user to choose different sizes of pizza,the crus
 
 ##### Link to Live Site : [LINK TO LIVE SITE](https://mwaidesu.github.io/pizza/)
 
+![Screenshot of Web Application](/images/pepper-pizza.png)
+
 
 ## Technologies Used
 
