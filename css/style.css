@@ -7,7 +7,7 @@ body{
   background-image: url("../images/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
 }
 h1{
   text-align: center;
@@ -16,7 +16,7 @@ h1{
   padding: 10px;
 }
 
-form{
+.myForm{
   background-image: url("../images/pizza2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -25,4 +25,18 @@ form{
   border-radius: 7px;
   color: white;
   margin: auto;
+}
+
+.form-group{
+  padding: 30px;
+}
+
+form .btn{
+  background-color: rgb(158,86,67);
+  color: white;
+}
+
+form .btn:hover{
+  background-color: #7A2E1B;
+  color: white;
 }
