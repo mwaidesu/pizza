@@ -1,7 +1,31 @@
 
-$(document).ready(function() {
-   
-  function Pizza(size, toppings, crust, total, orderNumber) {
+$(document).ready(function () {
+
+  $("table").hide();
+  $(".additional-buttons").hide();
+  $(".additional-info").hide();
+  $(".btn.yes").hide();
+  $(".btn.no").hide();
+  //$(".additional-info h4").hide();
+
+
+  $('.order').click(function (event) {
+
+    event.preventDefault();
+    var pizzaSize = $(".size option:selected").val();
+    var pizzaToppings = $(".toppings option:selected").val();
+    var pizzaCrust = $(".crust option:selected").val();
+    var total = parseInt(pizzaSize) + parseInt(pizzaToppings) + parseInt(pizzaCrust);
+    var order = 1;
+    var grandTotal = 0;
+
+    $("table").show();
+    $("#size").html($(".size option:selected").text() + " - " + pizzaSize);
+    $("#toppings").html($(".toppings option:selected").text() + " - " + pizzaToppings);
+    $("#crust").html($(".crust option:selected").text() + " - " + pizzaCrust);
+    $("#total").html(total);
+
+    function Pizza(size, toppings, crust, total, orderNumber) {
       this.size = size;
       this.toppings = toppings;
       this.crust = crust;
@@ -9,39 +33,39 @@ $(document).ready(function() {
       this.orderNumber = orderNumber;
     }
 
-$('.order').click(function() {
-  var pizzaSize = $(".size option:selected").val();
-  var pizzaToppings = $(".toppings option:selected").val();
-  var pizzaCrust = $(".crust option:selected").val();
-  var total = parseInt(pizzaSize) + parseInt(pizzaToppings) + parseInt(pizzaCrust);
-  var order = 1;
-  var grandTotal = 0;
-  
-  $("#size").html($(".size option:selected").text() + " - " + pizzaSize);
-  $("#toppings").html($(".toppings option:selected").text() + " - " + pizzaToppings);
-  $("#crust").html($(".crust option:selected").text() + " - " + pizzaCrust);
-  $("#total").html(total);
+    $('.add-btn').click(function () {
+      var pizzaSize = $(".size option:selected").val();
+      var pizzaToppings = $(".toppings option:selected").val();
+      var pizzaCrust = $(".crust option:selected").val();
+      var total = parseInt(pizzaSize) + parseInt(pizzaToppings) + parseInt(pizzaCrust);
+      order++;
+      grandTotal += total;
 
 
+      var newPizza = new Pizza(pizzaSize, pizzaToppings, pizzaCrust, total, order);
 
-  $('.add-btn').click(function() {
-    var pizzaSize = $(".size option:selected").val();
-    var pizzaToppings = $(".toppings option:selected").val();
-    var pizzaCrust = $(".crust option:selected").val();
-    var total = parseInt(pizzaSize) + parseInt(pizzaToppings) + parseInt(pizzaCrust);
-    order++;
-    grandTotal += total;
+      var newRow = '<tr><th scope="row">' + newPizza.orderNumber + '</th><td id="size">' + $(".size option:selected").text() + " - " + newPizza.size + '</td><td id="toppings">' + $(".toppings option:selected").text() + " - " + newPizza.toppings + '</td><td id="crust">' + $(".crust option:selected").text() + " - " + newPizza.crust + '</td><td id="total">' + newPizza.total + '</td></tr>'
 
+      $("#pizza").append(newRow);
+    });
 
-    var newPizza = new Pizza(pizzaSize, pizzaToppings, pizzaCrust, total, order);
+    $(".btn.check-out").click(function () {
+      $(".btn.add-btn").hide();
+      $(".btn.check-out").hide();
+      $(".info").show();
 
-    var newRow = '<tr><th scope="row">' + newPizza.orderNumber + '</th><td id="size">' + $(".size option:selected").text() + " - " + newPizza.size + '</td><td id="toppings">' + $(".toppings option:selected").text() + " - " + newPizza.toppings + '</td><td id="crust">' + $(".crust option:selected").text() + " - " + newPizza.crust + '</td><td id="total">' + newPizza.total + '</td></tr>'
+      grandTotal = grandTotal + total;
+      $(".info h3 span").html("Ksh. " + grandTotal);
 
-    $("#pizza").append(newRow);
-  });
-
-  
-});
-
-
-});
+      var answer = prompt("Would you like to have your pizza delivered for an extra Ksh.200? Type yes if so, no if you're okay.");
+      if (answer == "yes" || "Yes" || "YES" || "yEs" || "yES") {
+        var location = prompt("Enter your location: ");
+        alert("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
+        $(".info h3 span").html("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
+      }
+      else {
+        $(".info h3 span").html("Your total is Ksh.  " + grandTotal)
+      }
+    })
+  })
+})
