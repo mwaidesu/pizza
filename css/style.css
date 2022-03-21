@@ -9,3 +9,9 @@ body{
   background-repeat: no-repeat;
   background-position: center center;
 }
+h1{
+  text-align: center;
+  color: rgb(158,86,67);
+  background-color: #030406;
+  padding: 10px;
+}
