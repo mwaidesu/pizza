@@ -2,6 +2,9 @@
 
 A web application that allows a user to choose different sizes of pizza,the crust and the toppings and outputs the total price of the pizza including the delivery cost.
 
+
+[![Pepper Potts Pizza Palace](/../main/images/pepper-pizza.png)](/../main/images/pepper-pizza.png)
+
 ## Technologies Used
 
 - HTML & CSS (Bootstrap)
