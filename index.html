@@ -18,6 +18,7 @@
         <form action="" onsubmit="return false">
           <div class="form-group">
            <select class="size form-control">
+             <option value="" selected disabled hidden>Choose Pizza Size:</option>
              <option label="Large" value="1000">Large</option>
              <option label="Medium" value="800">Medium</option>
              <option label="Small" value="600">Small</option>
@@ -26,6 +27,7 @@
  
            <div class="form-group">
              <select class="crust form-control">
+              <option value="" selected disabled hidden>Choose the Crust you like:</option>
                <option label="Cripsy" value="200">Cripsy</option>
                <option label="Stuffed" value="150">Stuffed</option>
                <option label="Glutten Free" value="100">Glutten Free</option>
@@ -34,6 +36,7 @@
  
        <div class="form-group">
          <select class="toppings form-control">
+          <option value="" selected disabled hidden>Choose the Topping you want:</option>
            <option label="Chicken" value="250">Chicken</option>
            <option label="Sausage" value="200">Sausage</option>
            <option label="Mushrooms" value="150">Mushrooms</option>
@@ -47,7 +50,28 @@
        </form>
       </div>
 
-      <div class="col"></div>
+      <div class="col">
+        <table class="table">
+          <th>
+            <tr>
+              <th scope="col">Order Number</th>
+              <th scope="col">Pizza Size</th>
+              <th scope="col">Crust</th>
+              <th scope="col">Toppings</th>
+              <th scope="col">Total</th>
+            </tr>
+          </th>
+          <tbody id="pizza">
+            <tr>
+              <th scope="row">1</th>
+              <td id="size"></td>     
+              <td id="crust"></td>
+              <td id="toppings"></td>
+              <td id="total"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </body>
