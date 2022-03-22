@@ -13,7 +13,21 @@ $(document).ready(function () {
 
     event.preventDefault();
     var pizzaSize = $(".size option:selected").val();
-    var pizzaToppings = $(".toppings option:selected").val();
+
+    ///get more than one pizza topping and add the value
+    var pizzaToppings = document.querySelectorAll('.toppings :checked');
+      var pizzaToppings = [...pizzaToppings].map(option => option.value);
+      alert(pizzaToppings);
+
+      var pizzaToppings = pizzaToppings.map(str => {
+        return Number(str);
+      });
+    
+      pizzaToppings = pizzaToppings.reduce((partialSum, a) => partialSum + a, 0);
+console.log(pizzaToppings);
+
+
+
     var pizzaCrust = $(".crust option:selected").val();
     var total = parseInt(pizzaSize) + parseInt(pizzaToppings) + parseInt(pizzaCrust);
     var order = 1;
@@ -35,7 +49,10 @@ $(document).ready(function () {
 
     $('.add-btn').click(function () {
       var pizzaSize = $(".size option:selected").val();
-      var pizzaToppings = $(".toppings option:selected").val();
+      //var pizzaToppings = $(".toppings option:selected").val();
+      var pizzaToppings = document.querySelectorAll('.toppings :checked');
+      var pizzaToppings = [...pizzaToppings].map(option => option.value);
+      alert(pizzaToppings);
       var pizzaCrust = $(".crust option:selected").val();
       var total = parseInt(pizzaSize) + parseInt(pizzaToppings) + parseInt(pizzaCrust);
       order++;
