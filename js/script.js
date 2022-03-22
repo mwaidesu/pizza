@@ -2,11 +2,7 @@
 $(document).ready(function () {
 
   $("table").hide();
-  /*   $(".additional-buttons").hide();
-    $(".additional-info").hide();
-    $(".btn.yes").hide();
-    $(".btn.no").hide(); */
-  //$(".additional-info h4").hide();
+  $(".btn.reset").hide();
 
 
   $('.order').click(function (event) {
@@ -35,8 +31,8 @@ $(document).ready(function () {
     $("table").show();
     $("#size").html($(".size option:selected").text() + " - " + pizzaSize);
     console.log($("#size").html($(".size option:selected").text() + " - " + pizzaSize));
-    $("#toppings").html($(".toppings option:selected").text() + " - " + pizzaToppings);
     $("#crust").html($(".crust option:selected").text() + " - " + pizzaCrust);
+    $("#toppings").html($(".toppings option:selected").text() + " - " + pizzaToppings);
     $("#total").html(total);
 
     function Pizza(size, toppings, crust, total, orderNumber) {
@@ -69,7 +65,7 @@ $(document).ready(function () {
 
       var newPizza = new Pizza(pizzaSize, pizzaToppings, pizzaCrust, total, order);
 
-      var newRow = '<tr><th scope="row">' + newPizza.orderNumber + '</th><td id="size">' + $(".size option:selected").text() + " - " + newPizza.size + '</td><td id="toppings">' + $(".toppings option:selected").text() + " - " + newPizza.toppings + '</td><td id="crust">' + $(".crust option:selected").text() + " - " + newPizza.crust + '</td><td id="total">' + newPizza.total + '</td></tr>'
+      var newRow = '<tr><th scope="row">' + newPizza.orderNumber + '</th><td id="size">' + $(".size option:selected").text() + " - " + newPizza.size + '</td><td id="crust">' + $(".crust option:selected").text() + " - " + newPizza.crust + '</td><td id="toppings">' + $(".toppings option:selected").text() + " - " + newPizza.toppings + '</td><td id="total">' + newPizza.total + '</td></tr>'
 
       $("#pizza").append(newRow);
     });
@@ -78,33 +74,27 @@ $(document).ready(function () {
       $(".btn.add-btn").hide();
       $(".btn.check-out").hide();
       $(".info").show();
+      $(".btn.reset").show();
 
       grandTotal = grandTotal + total;
       $(".info h3 span").html("Ksh. " + grandTotal);
 
       if (grandTotal > 1) {
         var answer = prompt("Would you like to have your pizza delivered for an extra Ksh.200? Type yes if so, no if you're okay.");
-        if (answer == "yes" || "Yes" || "YES" || "yEs" || "yES") {
+        if (answer === "yes" || answer ==="Yes" || answer ==="YES" || answer ==="yEs" || answer ==="yES") {
           var location = prompt("Enter your location: ");
-          if (location != null) {
+          if (location != null && location != "") {
             alert("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
             $(".info h3 span").html("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
           }
+          else{
+            $(".info h3 span").html("Ksh. " + grandTotal);
         }
-        else {
+        }
+        else if (answer === "no" || answer ==="No" || answer ==="nO" || answer ==="NO" || answer ===""){
           $(".info h3 span").html("Ksh. " + grandTotal);
         }
       }
-
-      /* var answer = prompt("Would you like to have your pizza delivered for an extra Ksh.200? Type yes if so, no if you're okay.");
-      if (answer == "yes" || "Yes" || "YES" || "yEs" || "yES") {
-        var location = prompt("Enter your location: ");
-        alert("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
-        $(".info h3 span").html("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
-      }
-      else {
-        $(".info h3 span").html("Your total is Ksh.  " + grandTotal)
-      } */
     })
   })
 })
