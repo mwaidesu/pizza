@@ -44,6 +44,7 @@ $(document).ready(function () {
     }
 
     $('.add-btn').click(function () {
+      $(".btn.order").hide();
       var pizzaSize = $(".size option:selected").val();
 
       ///get more than one pizza topping and add the value

@@ -28,7 +28,7 @@ h1 {
 }
 
 label {
-  font-size: larger;
+  font-size: 35px;
 }
 
 .form-group {
@@ -43,4 +43,45 @@ form .btn {
 form .btn:hover {
   background-color: #7a2e1b;
   color: white;
+}
+
+table {
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  color: white !important;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+
+@media screen and (max-width: 768px) {
+  form{
+    width: 100%;
+    background-position: center;
+  
+  }
+  body{
+    background-image: none;
+    background-color:rgb(158,86,67) ;
+  }
+
+  h1{
+    color: white;
+  }
+}
+
+@media screen and (max-width: 576px){
+  body{
+    background-image: url("../images/pizza1.jpg");
+    width: 100%;
+  }
+}
+
+@media screen and (orientation: portrait){
+  body{
+    background-image: url("../images/pizza1.jpg");
+    width: 100%;
+  }
+
 }
