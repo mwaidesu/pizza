@@ -86,12 +86,12 @@ $(document).ready(function () {
         var answer = prompt("Would you like to have your pizza delivered for an extra Ksh.200? Type yes if so, no if you're okay.");
         if (answer == "yes" || "Yes" || "YES" || "yEs" || "yES") {
           var location = prompt("Enter your location: ");
-         if(location != null){
-          alert("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
-          $(".info h3 span").html("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
-         }
+          if (location != null) {
+            alert("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
+            $(".info h3 span").html("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
+          }
         }
-        else{
+        else {
           $(".info h3 span").html("Ksh. " + grandTotal);
         }
       }
