@@ -2,10 +2,10 @@
 $(document).ready(function () {
 
   $("table").hide();
-  $(".additional-buttons").hide();
-  $(".additional-info").hide();
-  $(".btn.yes").hide();
-  $(".btn.no").hide();
+  /*   $(".additional-buttons").hide();
+    $(".additional-info").hide();
+    $(".btn.yes").hide();
+    $(".btn.no").hide(); */
   //$(".additional-info h4").hide();
 
 
@@ -17,7 +17,6 @@ $(document).ready(function () {
     ///get more than one pizza topping and add the value
     var pizzaToppings = document.querySelectorAll('.toppings :checked');
     var pizzaToppings = [...pizzaToppings].map(option => option.value);
-    alert(pizzaToppings);
 
     var pizzaToppings = pizzaToppings.map(str => {
       return Number(str);
@@ -35,6 +34,7 @@ $(document).ready(function () {
 
     $("table").show();
     $("#size").html($(".size option:selected").text() + " - " + pizzaSize);
+    console.log($("#size").html($(".size option:selected").text() + " - " + pizzaSize));
     $("#toppings").html($(".toppings option:selected").text() + " - " + pizzaToppings);
     $("#crust").html($(".crust option:selected").text() + " - " + pizzaCrust);
     $("#total").html(total);
@@ -53,7 +53,6 @@ $(document).ready(function () {
       ///get more than one pizza topping and add the value
       var pizzaToppings = document.querySelectorAll('.toppings :checked');
       var pizzaToppings = [...pizzaToppings].map(option => option.value);
-      alert(pizzaToppings);
 
       var pizzaToppings = pizzaToppings.map(str => {
         return Number(str);
@@ -83,7 +82,21 @@ $(document).ready(function () {
       grandTotal = grandTotal + total;
       $(".info h3 span").html("Ksh. " + grandTotal);
 
-      var answer = prompt("Would you like to have your pizza delivered for an extra Ksh.200? Type yes if so, no if you're okay.");
+      if (grandTotal > 1) {
+        var answer = prompt("Would you like to have your pizza delivered for an extra Ksh.200? Type yes if so, no if you're okay.");
+        if (answer == "yes" || "Yes" || "YES" || "yEs" || "yES") {
+          var location = prompt("Enter your location: ");
+         if(location != null){
+          alert("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
+          $(".info h3 span").html("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
+         }
+        }
+        else{
+          $(".info h3 span").html("Ksh. " + grandTotal);
+        }
+      }
+
+      /* var answer = prompt("Would you like to have your pizza delivered for an extra Ksh.200? Type yes if so, no if you're okay.");
       if (answer == "yes" || "Yes" || "YES" || "yEs" || "yES") {
         var location = prompt("Enter your location: ");
         alert("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
@@ -91,7 +104,7 @@ $(document).ready(function () {
       }
       else {
         $(".info h3 span").html("Your total is Ksh.  " + grandTotal)
-      }
+      } */
     })
   })
 })
