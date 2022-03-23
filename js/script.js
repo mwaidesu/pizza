@@ -3,12 +3,35 @@ $(document).ready(function () {
 
   $("table").hide();
   $(".btn.reset").hide();
+  $(".toppings#mediumToppings").hide();
+  $(".toppings#smallToppings").hide();
 
+  //get different prices for toppings
+/*   $('.pizza-size').click(function(event){
+
+    var pizzaSize = $(".size option:selected").val();
+
+    pizzaSize = $(".size option:selected").val();
+  
+    if(pizzaSize = "800"){
+      $(".toppings#largeToppings").hide("fast");
+      $(".toppings#mediumToppings").show("fast");
+    }
+    else if(pizzaSize = "600"){
+      $(".toppings#largeToppings").hide("fast");
+      $(".toppings#mediumToppings").hide("fast");
+      $(".toppings#smallToppings").show("fast");
+    }else{
+      $(".toppings#largeToppings").show("fast");
+    }
+    event.preventDefault();
+  }) */
 
   $('.order').click(function (event) {
-
+    $(".btn.order").hide();
     event.preventDefault();
     var pizzaSize = $(".size option:selected").val();
+    console.log(pizzaSize)
 
     ///get more than one pizza topping and add the value
     var pizzaToppings = document.querySelectorAll('.toppings :checked');
@@ -44,7 +67,6 @@ $(document).ready(function () {
     }
 
     $('.add-btn').click(function () {
-      $(".btn.order").hide();
       var pizzaSize = $(".size option:selected").val();
 
       ///get more than one pizza topping and add the value
@@ -78,7 +100,6 @@ $(document).ready(function () {
       $(".btn.reset").show();
 
       grandTotal = grandTotal + total;
-      $(".info h3 span").html("Ksh. " + grandTotal);
 
       if (grandTotal > 1) {
         var answer = prompt("Would you like to have your pizza delivered for an extra Ksh.200? Type yes if so, no if you're okay.");
@@ -86,14 +107,14 @@ $(document).ready(function () {
           var location = prompt("Enter your location: ");
           if (location != null && location != "") {
             alert("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
-            $(".info h3 span").html("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
+            $(".info h2 span").html("Our rider will be dispatched shortly with your pizza to " + location + ". Your total amount  is  Ksh." + (grandTotal + 200));
           }
           else{
-            $(".info h3 span").html("Ksh. " + grandTotal);
+            $(".info h3 span").html("Your total is Ksh. " + grandTotal);
         }
         }
         else if (answer === "no" || answer ==="No" || answer ==="nO" || answer ==="NO" || answer ===""){
-          $(".info h3 span").html("Ksh. " + grandTotal);
+          $(".info h3 span").html("Your total is Ksh. " + grandTotal);
         }
       }
     })

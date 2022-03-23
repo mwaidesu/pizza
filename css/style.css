@@ -71,17 +71,17 @@ table {
   }
 }
 
-@media screen and (max-width: 576px){
+/* @media screen and (max-width: 576px){
   body{
     background-image: url("../images/pizza1.jpg");
     width: 100%;
   }
-}
+} */
 
-@media screen and (orientation: portrait){
+/* @media screen and (orientation: portrait){
   body{
     background-image: url("../images/pizza1.jpg");
     width: 100%;
   }
 
-}
+} */
