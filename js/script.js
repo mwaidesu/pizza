@@ -7,7 +7,7 @@ $(document).ready(function () {
   $(".toppings#smallToppings").hide();
 
   //get different prices for toppings
-/*   $('.pizza-size').click(function(event){
+  $('.pizza-size').click(function(event){
 
     var pizzaSize = $(".size option:selected").val();
 
@@ -25,7 +25,7 @@ $(document).ready(function () {
       $(".toppings#largeToppings").show("fast");
     }
     event.preventDefault();
-  }) */
+  })
 
   $('.order').click(function (event) {
     $(".btn.order").hide();
@@ -100,6 +100,7 @@ $(document).ready(function () {
       $(".btn.reset").show();
 
       grandTotal = grandTotal + total;
+      //$(".info h3 span").html("Your total is Ksh. " + grandTotal);
 
       if (grandTotal > 1) {
         var answer = prompt("Would you like to have your pizza delivered for an extra Ksh.200? Type yes if so, no if you're okay.");
